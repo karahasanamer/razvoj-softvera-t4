@@ -24,10 +24,6 @@ public class Artikal {
         }
     }
 
-    public Artikal() {
-
-    }
-
     public String getSifra() {
 
         return sifra;
@@ -36,7 +32,7 @@ public class Artikal {
     public void setSifra(String sifra) {
 
         this.sifra = sifra;
-        if (sifra == null || sifra.isEmpty()) {
+        if (sifra.equals(null) || sifra.isEmpty()) {
             throw new IllegalArgumentException("Unjeli ste pogresnu sifru");
         }
     }
@@ -49,7 +45,7 @@ public class Artikal {
     public void setNaziv(String naziv) {
 
         this.naziv = naziv;
-        if (naziv == null || naziv.isEmpty()) {
+        if (naziv.equals(null) || naziv.isEmpty()) {
             throw new IllegalArgumentException("Unjeli ste pogresan naziv");
         }
 
@@ -58,8 +54,9 @@ public class Artikal {
 
 
     @Override
+
     public String toString() {
-        return sifra + ", " + naziv + ", " + cijena;
+        return sifra + "," + naziv + "," + cijena;
     }
     public boolean equals(Object o){
         Artikal artikal = (Artikal)o;
@@ -73,13 +70,13 @@ public class Artikal {
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista){
 
         for(int i = 0;i < lista.size(); i++){
-            for(int j = 0; j < lista.size(); j++){
-                if(i!=j){
+            for(int j = i + 1; j < lista.size(); j++){
+
                     if(lista.get(i).equals(lista.get(j))){
                         lista.remove(j);
                     }
 
-                }
+
             }
         }
 
