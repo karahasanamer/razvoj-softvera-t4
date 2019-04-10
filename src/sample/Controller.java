@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,12 +29,12 @@ public class Controller implements Initializable {
    public void initialize(URL location, ResourceBundle resources) {
        oList.setAll(a);
      izborArtikla.setItems(oList);
+        SpinnerValueFactory<Integer> quantityValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+        this.kolicina.setValueFactory(quantityValueFactory);
 
    }
 
     public void dodajArtikle(ActionEvent actionEvent) {
-
-
 
         String[] str = unosArtikala.getText().split("\n");
 
@@ -41,7 +42,7 @@ public class Controller implements Initializable {
         a.add(new Artikal(i));
 
    }
-
+    izborArtikla.getItems().clear();
    Artikal.izbaciDuplikate(a);
 
    String c ="";
@@ -51,8 +52,14 @@ public class Controller implements Initializable {
    }
    ispisArtikala.setText(c);
 
-
-
+//    int br = 0;
+//     for(Artikal i : a){
+//
+//        if(br % 3 == 0){
+//            izborArtikla.getItems().add(i);
+//        }
+//        br++;
+//     }
 
     }
 
