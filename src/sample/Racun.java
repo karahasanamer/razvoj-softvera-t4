@@ -7,11 +7,15 @@ public class Racun {
     private ArrayList<Proizvod>proizvodi;
 
     public Racun(){
+
         proizvodi = new ArrayList<>();
     }
-    public void ubaci(Artikal artikal,int kol){
+
+    public void ubaci(Artikal artikal,int kol)
+    {
         proizvodi.add(new Proizvod(artikal,kol));
     }
+
     public double vrijednost(){
 
         double rez = 0;
@@ -27,11 +31,11 @@ public class Racun {
         Proizvod(){}
         Proizvod(Artikal artikal, int kol){
 
-            this.artikal = artikal;
-            this.kol = kol;
+            artikal = artikal;
+            kol = kol;
         }
 
-        @Override
+
         public String toString(){
             String c = "";
             for(Proizvod p : proizvodi){
